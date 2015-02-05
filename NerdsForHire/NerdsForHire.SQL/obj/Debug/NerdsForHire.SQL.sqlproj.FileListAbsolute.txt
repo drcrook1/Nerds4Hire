@@ -1,0 +1,5 @@
+C:\Projects\demos\DataEnd\NerdsForHire\NerdsForHire.SQL\bin\Debug\NerdsForHire.SQL.dacpac
+C:\Projects\demos\DataEnd\NerdsForHire\NerdsForHire.SQL\obj\Debug\NerdsForHire.SQL.dll
+C:\Projects\demos\DataEnd\NerdsForHire\NerdsForHire.SQL\obj\Debug\NerdsForHire.SQL.pdb
+C:\Projects\demos\DataEnd\NerdsForHire\NerdsForHire.SQL\bin\Debug\NerdsForHire.SQL.dll
+C:\Projects\demos\DataEnd\NerdsForHire\NerdsForHire.SQL\bin\Debug\NerdsForHire.SQL.pdb
