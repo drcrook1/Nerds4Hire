@@ -48,6 +48,19 @@ USE [$(DatabaseName)];
 
 
 GO
+PRINT N'Creating [dbo].[NerdSpecialtyRef]...';
+
+
+GO
+CREATE TABLE [dbo].[NerdSpecialtyRef] (
+    [NerdId]      INT NOT NULL,
+    [SpecialtyId] INT NOT NULL,
+    [Id]          INT NOT NULL,
+    CONSTRAINT [PK_NerdSpecialtyRef] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
 PRINT N'Creating [dbo].[Specialty]...';
 
 
@@ -76,28 +89,6 @@ CREATE TABLE [dbo].[Nerd] (
 
 
 GO
-PRINT N'Creating [dbo].[NerdSpecialtyRef]...';
-
-
-GO
-CREATE TABLE [dbo].[NerdSpecialtyRef] (
-    [NerdId]      INT NOT NULL,
-    [SpecialtyId] INT NOT NULL,
-    [Id]          INT NOT NULL,
-    CONSTRAINT [PK_NerdSpecialtyRef] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[FK_Nerd_Specialty]...';
-
-
-GO
-ALTER TABLE [dbo].[Nerd]
-    ADD CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty] ([Id]);
-
-
-GO
 PRINT N'Creating [dbo].[FK_NerdSpecialtyRef_Nerd]...';
 
 
@@ -113,6 +104,15 @@ PRINT N'Creating [dbo].[FK_NerdSpecialtyRef_Specialty]...';
 GO
 ALTER TABLE [dbo].[NerdSpecialtyRef]
     ADD CONSTRAINT [FK_NerdSpecialtyRef_Specialty] FOREIGN KEY ([SpecialtyId]) REFERENCES [dbo].[Specialty] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Nerd_Specialty]...';
+
+
+GO
+ALTER TABLE [dbo].[Nerd]
+    ADD CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty] ([Id]);
 
 
 GO
