@@ -53,8 +53,9 @@ PRINT N'Creating [dbo].[Specialty]...';
 
 GO
 CREATE TABLE [dbo].[Specialty] (
-    [Id]   INT           NOT NULL,
-    [Name] NVARCHAR (50) NOT NULL,
+    [Id]          INT            NOT NULL,
+    [Name]        NVARCHAR (50)  NOT NULL,
+    [Description] NVARCHAR (MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -65,11 +66,25 @@ PRINT N'Creating [dbo].[Nerd]...';
 
 GO
 CREATE TABLE [dbo].[Nerd] (
-    [Id]        INT           NOT NULL,
-    [FirstName] NVARCHAR (50) NOT NULL,
-    [LastName]  NVARCHAR (50) NOT NULL,
-    [Specialty] INT           NOT NULL,
+    [Id]        INT            NOT NULL,
+    [FirstName] NVARCHAR (50)  NOT NULL,
+    [LastName]  NVARCHAR (50)  NOT NULL,
+    [Specialty] INT            NOT NULL,
+    [TagList]   NVARCHAR (MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[NerdSpecialtyRef]...';
+
+
+GO
+CREATE TABLE [dbo].[NerdSpecialtyRef] (
+    [NerdId]      INT NOT NULL,
+    [SpecialtyId] INT NOT NULL,
+    [Id]          INT NOT NULL,
+    CONSTRAINT [PK_NerdSpecialtyRef] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
 
@@ -81,6 +96,37 @@ GO
 ALTER TABLE [dbo].[Nerd]
     ADD CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty] ([Id]);
 
+
+GO
+PRINT N'Creating [dbo].[FK_NerdSpecialtyRef_Nerd]...';
+
+
+GO
+ALTER TABLE [dbo].[NerdSpecialtyRef]
+    ADD CONSTRAINT [FK_NerdSpecialtyRef_Nerd] FOREIGN KEY ([NerdId]) REFERENCES [dbo].[Nerd] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_NerdSpecialtyRef_Specialty]...';
+
+
+GO
+ALTER TABLE [dbo].[NerdSpecialtyRef]
+    ADD CONSTRAINT [FK_NerdSpecialtyRef_Specialty] FOREIGN KEY ([SpecialtyId]) REFERENCES [dbo].[Specialty] ([Id]);
+
+
+GO
+-- Refactoring step to update target server with deployed transaction logs
+
+IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
+BEGIN
+    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
+END
+GO
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '2671ea4a-7766-45b3-91f1-c540e52dcbc1')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('2671ea4a-7766-45b3-91f1-c540e52dcbc1')
+
+GO
 
 GO
 PRINT N'Update complete.';

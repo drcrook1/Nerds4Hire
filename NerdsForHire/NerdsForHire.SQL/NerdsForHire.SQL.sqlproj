@@ -64,8 +64,12 @@
   <ItemGroup>
     <Build Include="dbo\tables\Nerd.sql" />
     <Build Include="dbo\tables\Specialty.sql" />
+    <Build Include="dbo\tables\NerdSpecialtyRef.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NerdsForHire.SQL.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="NerdsForHire.SQL.refactorlog" />
   </ItemGroup>
 </Project>

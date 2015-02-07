@@ -4,5 +4,6 @@
     [FirstName] NVARCHAR(50) NOT NULL, 
     [LastName] NVARCHAR(50) NOT NULL, 
     [Specialty] INT NOT NULL, 
+    [TagList] NVARCHAR(MAX) NOT NULL, 
     CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty]([Id])
 )
