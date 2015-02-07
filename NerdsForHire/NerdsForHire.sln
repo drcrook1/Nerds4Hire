@@ -5,6 +5,19 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NerdsForHire.SQL", "NerdsForHire.SQL\NerdsForHire.SQL.sqlproj", "{F5E4BCA8-17AF-4AE8-9FB7-BA612D28808F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdsForHire.Services", "NerdsForHire.Services\NerdsForHire.Services.csproj", "{8AFE2E36-1124-4210-BF18-9A5F49A56FD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{FFB8B047-5675-4D73-ADB0-745A76B7F24C}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{B9C874E2-71CD-4289-B928-3966502ECFE1}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\NerdsForHireServices-WAWS-dev.json = PublishScripts\Configurations\NerdsForHireServices-WAWS-dev.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +30,15 @@ Global
 		{F5E4BCA8-17AF-4AE8-9FB7-BA612D28808F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5E4BCA8-17AF-4AE8-9FB7-BA612D28808F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5E4BCA8-17AF-4AE8-9FB7-BA612D28808F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8AFE2E36-1124-4210-BF18-9A5F49A56FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AFE2E36-1124-4210-BF18-9A5F49A56FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AFE2E36-1124-4210-BF18-9A5F49A56FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AFE2E36-1124-4210-BF18-9A5F49A56FD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9C874E2-71CD-4289-B928-3966502ECFE1} = {FFB8B047-5675-4D73-ADB0-745A76B7F24C}
 	EndGlobalSection
 EndGlobal
