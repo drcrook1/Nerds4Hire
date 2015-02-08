@@ -1,4 +1,5 @@
 ﻿using NerdsForHire.Services.Models.Domain;
+using NerdsForHire.Services.Models.SQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,21 @@ namespace NerdsForHire.Services.Controllers
 {
     public class NerdController : ApiController
     {
-        // GET: api/Nerd
-        public async Task<NerdDomain> Get()
-        {
-            HttpClient client = new HttpClient();
-            var result = await client.GetAsync("http://localhost:56549/api/values/5");
-            
-            return new NerdDomain(1, result.Content.ToString(), "Crook");
-        }
-
         // GET: api/Nerd/5
-        public string Get(int id)
+        public async Task<NerdDomain> Get(int id)
         {
-            return "value";
+            try
+            {
+                NerdsForHire.Services.Models.SQL.NerdsForHire context = new Models.SQL.NerdsForHire();
+                Nerd n = await context.Nerds.FindAsync(id);
+                NerdDomain nPrime = new NerdDomain(n.Id, n.FirstName, n.LastName);
+                nPrime.Specialty = new SpecialtyDomain(n.Specialty1.Id, n.Specialty1.Name);
+                return nPrime;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         // POST: api/Nerd
