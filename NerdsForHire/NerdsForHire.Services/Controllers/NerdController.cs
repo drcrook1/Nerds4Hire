@@ -13,7 +13,7 @@ namespace NerdsForHire.Services.Controllers
     public class NerdController : ApiController
     {
         // GET: api/Nerd/5
-        public async Task<NerdDomain> Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             try
             {
@@ -21,11 +21,11 @@ namespace NerdsForHire.Services.Controllers
                 Nerd n = await context.Nerds.FindAsync(id);
                 NerdDomain nPrime = new NerdDomain(n.Id, n.FirstName, n.LastName);
                 nPrime.Specialty = new SpecialtyDomain(n.Specialty1.Id, n.Specialty1.Name);
-                return nPrime;
+                return Ok(nPrime);
             }
             catch (Exception e)
             {
-                return null;
+                return NotFound();
             }
         }
 
