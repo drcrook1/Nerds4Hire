@@ -8,7 +8,3 @@ C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\bin\Debug\NerdsForHire.SQL.
 C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\bin\Debug\NerdsForHire.SQL.pdb
 C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\NerdsForHire.SQL.dll
 C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\NerdsForHire.SQL.pdb
-C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\Model.xml
-C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\refactor.xml
-C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\postdeploy.sql
-C:\projects\Nerds4Hire\NerdsForHire\NerdsForHire.SQL\obj\Debug\predeploy.sql

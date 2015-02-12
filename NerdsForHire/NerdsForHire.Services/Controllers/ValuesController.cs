@@ -16,6 +16,7 @@ namespace NerdsForHire.Services.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        [AllowAnonymous]
         // GET api/values/5
         public string Get(int id)
         {

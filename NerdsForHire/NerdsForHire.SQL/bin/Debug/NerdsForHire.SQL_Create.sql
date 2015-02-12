@@ -89,6 +89,21 @@ CREATE TABLE [dbo].[Nerd] (
 
 
 GO
+PRINT N'Creating [dbo].[Jobs]...';
+
+
+GO
+CREATE TABLE [dbo].[Jobs] (
+    [Id]           INT            NOT NULL,
+    [Name]         NVARCHAR (50)  NOT NULL,
+    [Description]  NVARCHAR (MAX) NOT NULL,
+    [Pay]          FLOAT (53)     NOT NULL,
+    [AssignedNerd] INT            NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+GO
 PRINT N'Creating [dbo].[FK_NerdSpecialtyRef_Nerd]...';
 
 
@@ -113,6 +128,15 @@ PRINT N'Creating [dbo].[FK_Nerd_Specialty]...';
 GO
 ALTER TABLE [dbo].[Nerd]
     ADD CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty] ([Id]);
+
+
+GO
+PRINT N'Creating [dbo].[FK_Jobs_Nerd]...';
+
+
+GO
+ALTER TABLE [dbo].[Jobs]
+    ADD CONSTRAINT [FK_Jobs_Nerd] FOREIGN KEY ([AssignedNerd]) REFERENCES [dbo].[Nerd] ([Id]);
 
 
 GO

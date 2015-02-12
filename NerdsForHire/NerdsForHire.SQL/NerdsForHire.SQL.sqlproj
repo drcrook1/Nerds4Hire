@@ -65,6 +65,7 @@
     <Build Include="dbo\tables\Nerd.sql" />
     <Build Include="dbo\tables\Specialty.sql" />
     <Build Include="dbo\tables\NerdSpecialtyRef.sql" />
+    <Build Include="dbo\tables\Jobs.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NerdsForHire.SQL.publish.xml" />

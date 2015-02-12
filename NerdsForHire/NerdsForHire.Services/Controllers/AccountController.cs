@@ -318,7 +318,13 @@ namespace NerdsForHire.Services.Controllers
             return logins;
         }
 
-        // POST api/Account/Register
+        // POST api/Account/
+
+
+
+
+
+
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)

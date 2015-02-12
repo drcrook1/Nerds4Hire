@@ -23,5 +23,6 @@ namespace NerdsForHire.Services.Models.SQL
                 .HasForeignKey(e => e.Specialty)
                 .WillCascadeOnDelete(false);
         }
+
     }
 }
