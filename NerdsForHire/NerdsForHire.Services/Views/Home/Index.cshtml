@@ -1,123 +1,26 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="app">
+
+<head>
+    <title>FSharp Web Kit</title>
+</head>
 <body>
-    <div>
-        <h1>
-            Create a new Nerd!
-        </h1>
-        <form>
-            First name:<br />
-            <input type="text" id="firstname" />
-            <br />
-            Last name:<br />
-            <input type="text" id="lastname" />
-            <br />
-            Specialty Id:<br />
-            <input type="text" id="specialtyid" />
-            
-        </form>
-        <button id="postNerd">Submit!</button>
-        <h1>
-            Create a new Specialty!
-        </h1>
-        <form>
-            Name:<br />
-            <input type="text" id="specName" />
-            <br />
-            
-        </form>
-        <button id="postSpec">Submit!</button>
+    <div ng-controller="HomePageController as HomePage">
+
+        <h1>{{HomePage.Title}}</h1>
+        <ul>
+            <li><a ui-sref="routeOne">Route One</a></li>
+            <li><a ui-sref="routeTwo">Route Two</a></li>
+            <li><a ui-sref="routeThree">Route Three</a></li>
+        </ul>
+        @*<ul>
+                <li><a href="/#/login">Login</a></li>
+                <li><a href="/#/register">Register</a></li>
+            </ul>*@
+        <div ui-view></div>
     </div>
-    <script src="~/Scripts/jquery-2.1.3.js"></script>
-    <script>
-        (function indexPage() {
-            window.onload = init;
-            function init() {
-                var button = document.getElementById("postNerd");
-                button.onclick = postNerd;
-                var button2 = document.getElementById("postSpec");
-                button2.onclick = postSpec;
-            }
 
-            function postSpec() {
-                //alert($.post);
-                var spec = {
-                    Name: $("#specName").val(),
-                    Id: 4
-                };
-                alert(JSON.stringify(spec));
-                $.post('/api/Specialties/', spec);
-                //ajaxHelper("/api/Specialties/", 'POST', spec).success(
-                //    function (data) {
-                //        alert(data);
-                //    });
-            }
-
-            //function ajaxHelper(uri, method, data) {
-            //    return $.ajax({
-            //        type: method,
-            //        url: uri,
-            //        dataType: 'json',
-            //        contentType: 'application/json',
-            //        data: data ? JSON.stringify(data) : null
-            //    }).fail(function (jqXHR, textStatus, errorThrown) {
-            //        self.error(errorThrown);
-            //    });
-            //}
-
-            function postNerd() {
-                //var nerd = '{"Id":2,"FirstName":"David","LastName":"Crook","Specialty":{"Id":1,"Name":"Programming"},"Tags":[]}';
-                //alert($.post);
-                var nerd = {
-                    FirstName: $("#firstname").val(),
-                    LastName: $("#lastname").val(),
-                    Specialty: { Id: 1, Name: "Programming" },
-                    Tags: ["Tag1", "Tag2", "Tag3"]
-                };
-                alert(JSON.stringify(nerd));
-                $.post("/api/nerd/", nerd);
-                //ajaxHelper("/api/nerd/", 'POST', nerd).success(function (data) { alert(data); });
-            }
-
-
-        })();
-    </script>
-
-    <script>
-        //var url = "/api/nerd";
-
-        //var nerd = new Object();
-        //nerd.FirstName = $("#firstname").val();
-        //nerd.LastName = $("#lastname").val();
-        //nerd.Specialty = { "Id": 1, "Name": "Programming" };
-        //nerd.Tags = [];
-        //var stringyNerd = JSON.stringify(nerd);
-        //$.ajax({
-        //    type: "POST",
-        //    url: url,
-        //    dataType: "json",
-        //    data: nerd,
-        //    success: function (data) {
-        //        alert(data);
-        //    },
-        //    error: function (error) {
-        //        jsonValue = jQuery.parseJSON(error.responseText);
-        //    }
-        //});
-        //$.post('/api/nerd', { '': nerd });
-
-        //$.ajax({
-        //    url: 'http://localhost:3413/api/nerd',
-        //    type: 'POST',
-        //    dataType: 'json',
-        //    data: nerd,
-        //    success: function (data, textStatus, xhr) {
-        //        console.log(data);
-        //    },
-        //    error: function (xhr, textStatus, errorThrown) {
-        //        console.log('Error in Operation');
-        //    }
-        //});
-    </script>
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/Nerds4Hire")
 </body>
 </html>
