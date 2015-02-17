@@ -1,7 +1,6 @@
 ﻿(function () {
     'use strict';
     angular.module('app', ['ui.router'])
-    .controller('HomePageController', HomePageController)
     .factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor)
     .config(configFunction);
 

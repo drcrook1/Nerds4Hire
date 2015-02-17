@@ -11,15 +11,24 @@ namespace NerdsForHire.Services
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
             "~/Content/bootstrap.css",
-            "~/Content/site.css"));
+            "~/Content/site.css",
+            "~/WinJS/css/ui-dark.min.css"));
 
-            string[] angularBundle = new string[2]{"~/scripts/vendor/angular/angular.min.js" , "~/scripts/vendor/angular/angular-ui-router.min.js"};
+            string[] angularBundle = new string[2] { "~/scripts/vendor/angular/angular.min.js", "~/scripts/vendor/angular/angular-ui-router.min.js" };
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(angularBundle));
             bundles.Add(new ScriptBundle("~/bundles/Nerds4Hire")
-            .IncludeDirectory("~/scripts/controllers", "*.js")
-            .IncludeDirectory("~/scripts/factories", "*.js")
-            .Include(new string[1]{"~/scripts/app.module.js"}));
+                /* WinJS */
+                .Include
+                ("~/WinJS/js/WinJS.min.js", // Not sure if I need this one in her
+                  "~/WinJS/js//base.min.js",
+                  "~/WinJS/js/ui.min.js",
+                  "~/angular/angular-winjs.min.js")
+                .IncludeDirectory("~/scripts/factories", "*.js")
+                .Include(new string[1] { "~/scripts/app.module.js" })
+                .IncludeDirectory("~/scripts/controllers", "*.js")
+
+            );
             BundleTable.EnableOptimizations = false;
 
         }
