@@ -120,6 +120,7 @@ namespace NerdsForHire.Services.Controllers
                 // Create a message and add it to the queue.
                 CloudQueueMessage message = new CloudQueueMessage(nerd.githubId);
                 await queue.AddMessageAsync(message);
+                //new
             }
             catch(Exception e)
             {
