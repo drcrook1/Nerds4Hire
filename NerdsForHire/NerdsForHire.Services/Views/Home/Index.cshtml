@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html ng-app="app">
 
 <head>
@@ -17,7 +18,15 @@
                 <li><a href="/#/login">Login</a></li>
                 <li><a href="/#/register">Register</a></li>
             </ul>*@
-        <div ui-view></div>
+
+        <!-- ANGULAR CONTENT-->
+        <textarea id="btn_GitHubName"></textarea> <!--Create fnction in controller for displaying github user name-->
+        <button id="btn_submit" data-win-control="WinJS.UI.Tooltip" data-win-options="{innerHTML: 'Submit your Order'}">
+            {{HomePage.GitHubID}}
+        </button>
+        <div ui-view>
+
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/angular")
