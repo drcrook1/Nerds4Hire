@@ -9,6 +9,12 @@ namespace NerdsForHire.Services.Models.SQL
     [Table("Nerd")]
     public partial class Nerd
     {
+        public Nerd()
+        {
+            Jobs = new HashSet<Job>();
+            NerdSpecialtyRefs = new HashSet<NerdSpecialtyRef>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
@@ -25,6 +31,12 @@ namespace NerdsForHire.Services.Models.SQL
         [Required]
         public string TagList { get; set; }
 
+        public string githubId { get; set; }
+
+        public virtual ICollection<Job> Jobs { get; set; }
+
         public virtual Specialty Specialty1 { get; set; }
+
+        public virtual ICollection<NerdSpecialtyRef> NerdSpecialtyRefs { get; set; }
     }
 }

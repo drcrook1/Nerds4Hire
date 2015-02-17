@@ -5,5 +5,6 @@
     [LastName] NVARCHAR(50) NOT NULL, 
     [Specialty] INT NOT NULL, 
     [TagList] NVARCHAR(MAX) NOT NULL, 
+    [githubId] NVARCHAR(MAX) NULL, 
     CONSTRAINT [FK_Nerd_Specialty] FOREIGN KEY ([Specialty]) REFERENCES [dbo].[Specialty]([Id])
 )

@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NerdsForHire.Services.Models.SQL;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.WindowsAzure;
 
 namespace NerdsForHire.Services.Controllers
 {
@@ -99,6 +103,29 @@ namespace NerdsForHire.Services.Controllers
             }
 
             return CreatedAtRoute("DefaultApi", new { id = nerd.Id }, nerd);
+        }
+
+        [ResponseType(typeof(bool))]
+        [Route("Scrape")]
+        public async Task<IHttpActionResult> Scrape(Nerd nerd)
+        {
+            try
+            {
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("NerdsForHireAzureStorage"));
+                CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+                // Retrieve a reference to a queue
+                CloudQueue queue = queueClient.GetQueueReference("githubScrapeInput");
+                // Create the queue if it doesn't already exist
+                queue.CreateIfNotExists();
+                // Create a message and add it to the queue.
+                CloudQueueMessage message = new CloudQueueMessage(nerd.githubId);
+                await queue.AddMessageAsync(message);
+            }
+            catch(Exception e)
+            {
+                return Ok(false);
+            }
+            return Ok(true);
         }
 
         // DELETE: api/Nerd/5

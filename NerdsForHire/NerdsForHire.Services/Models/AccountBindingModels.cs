@@ -35,6 +35,10 @@ namespace NerdsForHire.Services.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

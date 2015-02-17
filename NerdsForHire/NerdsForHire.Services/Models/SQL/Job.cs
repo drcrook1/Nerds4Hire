@@ -6,15 +6,8 @@ namespace NerdsForHire.Services.Models.SQL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Specialty")]
-    public partial class Specialty
+    public partial class Job
     {
-        public Specialty()
-        {
-            Nerds = new HashSet<Nerd>();
-            NerdSpecialtyRefs = new HashSet<NerdSpecialtyRef>();
-        }
-
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
@@ -25,8 +18,10 @@ namespace NerdsForHire.Services.Models.SQL
         [Required]
         public string Description { get; set; }
 
-        public virtual ICollection<Nerd> Nerds { get; set; }
+        public double Pay { get; set; }
 
-        public virtual ICollection<NerdSpecialtyRef> NerdSpecialtyRefs { get; set; }
+        public int? AssignedNerd { get; set; }
+
+        public virtual Nerd Nerd { get; set; }
     }
 }
