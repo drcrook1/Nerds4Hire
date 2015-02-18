@@ -37,11 +37,13 @@ let ScrapeGitHub([<QueueTrigger("githubScrapeInput")>]message : string) =
 
 [<EntryPoint>]
 let main argv = 
-    let _dashboardConn = @"DefaultEndpointsProtocol=https;AccountName=nerdsforhirestorage;AccountKey=iqFlEAh3ZkXbU6AMbbtgH11o0PHyNslMFWbNqRQ4jD7OqK7lVClZ7RLJgTaA1TL9v/t/w2W0FoeEIpUBUmHZVw=="//CloudConfigurationManager.GetSetting("AzureWebJobsDashboard")
-    let _storageConn = @"DefaultEndpointsProtocol=https;AccountName=nerdsforhirestorage;AccountKey=iqFlEAh3ZkXbU6AMbbtgH11o0PHyNslMFWbNqRQ4jD7OqK7lVClZ7RLJgTaA1TL9v/t/w2W0FoeEIpUBUmHZVw=="//CloudConfigurationManager.GetSetting("AzureWebJobsStorage")
+    let _dashboardConn = @"DefaultEndpointsProtocol=https;AccountName=nerdsforhirestorage;AccountKey=iqFlEAh3ZkXbU6AMbbtgH11o0PHyNslMFWbNqRQ4jD7OqK7lVClZ7RLJgTaA1TL9v/t/w2W0FoeEIpUBUmHZVw=="
+    let _storageConn = @"DefaultEndpointsProtocol=https;AccountName=nerdsforhirestorage;AccountKey=iqFlEAh3ZkXbU6AMbbtgH11o0PHyNslMFWbNqRQ4jD7OqK7lVClZ7RLJgTaA1TL9v/t/w2W0FoeEIpUBUmHZVw=="
     let config = new JobHostConfiguration()
     config.DashboardConnectionString <- _dashboardConn
     config.StorageConnectionString <- _storageConn
+    printf "%s" config.DashboardConnectionString
     let host = new JobHost(config) 
+    //let host = new JobHost()
     host.RunAndBlock()
     0 // return an integer exit code

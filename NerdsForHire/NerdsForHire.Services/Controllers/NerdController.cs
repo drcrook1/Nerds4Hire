@@ -27,29 +27,29 @@ namespace NerdsForHire.Services.Controllers
             return db.Nerds;
         }
 
-        [HttpGet]
-        [ResponseType(typeof(Nerd))]
-        public IHttpActionResult GetNerd(int id)
-        {
-            Nerd n = new Nerd();
-            n.FirstName = "David";
-            n.LastName = "Crook";
-            n.githubId = "drcrook1";
-            return Ok(n);
-        }
-
-        //// GET: api/Nerd/5
+        //[HttpGet]
         //[ResponseType(typeof(Nerd))]
-        //public async Task<IHttpActionResult> GetNerd(int id)
+        //public IHttpActionResult GetNerd(int id)
         //{
-        //    Nerd nerd = await db.Nerds.FindAsync(id);
-        //    if (nerd == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(nerd);
+        //    Nerd n = new Nerd();
+        //    n.FirstName = "David";
+        //    n.LastName = "Crook";
+        //    n.githubId = "drcrook1";
+        //    return Ok(n);
         //}
+
+        // GET: api/Nerd/5
+        [ResponseType(typeof(Nerd))]
+        public async Task<IHttpActionResult> GetNerd(int id)
+        {
+            Nerd nerd = await db.Nerds.FindAsync(id);
+            if (nerd == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(nerd);
+        }
 
         // PUT: api/Nerd/5
         [ResponseType(typeof(void))]

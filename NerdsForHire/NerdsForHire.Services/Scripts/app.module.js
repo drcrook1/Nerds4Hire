@@ -2,7 +2,7 @@
     'use strict';
     angular.module('app', ['ui.router'])
     .factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor)
-    //.config(configFunction);
+    .config(configFunction);
 
     function configFunction($stateProvider, $urlRouterProvider, $httpProvider) {
         $urlRouterProvider.otherwise("/one");

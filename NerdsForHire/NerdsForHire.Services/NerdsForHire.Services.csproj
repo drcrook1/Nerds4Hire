@@ -274,6 +274,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Properties\PublishProfiles\Nerds4Hire.pubxml" />
+    <None Include="Properties\PublishProfiles\nerds4hire__Staging.pubxml" />
     <None Include="Properties\PublishProfiles\NerdsForHire-Services.pubxml" />
     <None Include="Properties\PublishProfiles\NerdsForHire-Services__ForTesters.pubxml" />
     <Content Include="Scripts\vendor\angular\angular-ui-router.js" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\vendor\angular\angular.min.js.map" />
+    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
