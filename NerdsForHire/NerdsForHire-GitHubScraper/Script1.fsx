@@ -15,7 +15,7 @@ let repositories' = repositories.Descendants("li")
                          repos.Descendants("a") 
                         |> Seq.map(fun n -> 
                                     {
-                                    Title = n.AttributeValue("href");
+                                    Title = n.Elements().[1].InnerText();
                                     Link = n.AttributeValue("href");
                                     Description = n.Elements().[3].InnerText();
                                     Stars = n.Elements().[2].InnerText().AsInteger()
