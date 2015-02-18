@@ -1,28 +1,27 @@
-﻿"use strict";
-(function () {
-    console.log("HomePageController loaded");
+﻿(function () {
+    'use strict';
+
     angular.module('app')
-        .controller('HomePageController', thingsandstuff);
+        .controller('HomePageController', ['$scope', '$http', function ($scope, $http) {
+            var vm = this;
+            vm.Title = "FSharp Web Kit";
+            vm.GitHubID = "GitHubID";
 
-    function thingsandstuff() {
-        var vm          = this;
-            vm.Title    = "FSharp Web Kit";
-            vm.GitHubID = "GitHubID"; //TODO: set this w/ a Get call to retrieve GitHub ID from user
-
-        // Retrieves GitHub ID from screen scraper
-        this.GetGitHubID = function() {
-            $http.get("/api/trivia") //TODO: Replace w/ call to screen scraper to return ID
-                .success(function(data, status, headers, config) {
-                    vm.GitHubID = data.GitHubID;
-              }).error(function(data, status, headers, config) {
-                    vm.GitHubID = "Oops... something went wrong";
-                });
-        }
-
-    }
-    // Required to have all WinJS controls be active on the page.
-    // I just left it here because I know that this controller gets called each time the app loadas
-    WinJS.UI.processAll();
-})();
-
-  
+            $scope.scrapeGitHub = function () {
+                alert("Attempting to Scrape!");
+                var gitId = document.getElementById("btn_GitHubName").value;
+                var data = {
+                    "Id": 0,
+                    "FirstName": "David",
+                    "LastName": "Crook",
+                    "Specialty": 0,
+                    "TagList": null,
+                    "githubId": gitId,
+                    "Jobs": [],
+                    "Specialty1": null,
+                    "NerdSpecialtyRefs": []
+                }
+                $http.post("/api/Nerd/Scrape/", data);
+            };
+        }]);
+})(); 

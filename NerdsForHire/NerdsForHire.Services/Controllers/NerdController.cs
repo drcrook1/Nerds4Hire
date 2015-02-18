@@ -27,18 +27,29 @@ namespace NerdsForHire.Services.Controllers
             return db.Nerds;
         }
 
-        // GET: api/Nerd/5
+        [HttpGet]
         [ResponseType(typeof(Nerd))]
-        public async Task<IHttpActionResult> GetNerd(int id)
+        public IHttpActionResult GetNerd(int id)
         {
-            Nerd nerd = await db.Nerds.FindAsync(id);
-            if (nerd == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(nerd);
+            Nerd n = new Nerd();
+            n.FirstName = "David";
+            n.LastName = "Crook";
+            n.githubId = "drcrook1";
+            return Ok(n);
         }
+
+        //// GET: api/Nerd/5
+        //[ResponseType(typeof(Nerd))]
+        //public async Task<IHttpActionResult> GetNerd(int id)
+        //{
+        //    Nerd nerd = await db.Nerds.FindAsync(id);
+        //    if (nerd == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(nerd);
+        //}
 
         // PUT: api/Nerd/5
         [ResponseType(typeof(void))]
@@ -76,6 +87,7 @@ namespace NerdsForHire.Services.Controllers
         }
 
         // POST: api/Nerd
+        [HttpPost]
         [ResponseType(typeof(Nerd))]
         public async Task<IHttpActionResult> PostNerd(Nerd nerd)
         {
@@ -106,15 +118,15 @@ namespace NerdsForHire.Services.Controllers
         }
 
         [ResponseType(typeof(bool))]
-        [Route("Scrape")]
+        [HttpPost]
         public async Task<IHttpActionResult> Scrape(Nerd nerd)
         {
             try
             {
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("NerdsForHireAzureStorage"));
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(@"DefaultEndpointsProtocol=https;AccountName=nerdsforhirestorage;AccountKey=iqFlEAh3ZkXbU6AMbbtgH11o0PHyNslMFWbNqRQ4jD7OqK7lVClZ7RLJgTaA1TL9v/t/w2W0FoeEIpUBUmHZVw==");
                 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
                 // Retrieve a reference to a queue
-                CloudQueue queue = queueClient.GetQueueReference("githubScrapeInput");
+                CloudQueue queue = queueClient.GetQueueReference("githubscrapeinput");
                 // Create the queue if it doesn't already exist
                 queue.CreateIfNotExists();
                 // Create a message and add it to the queue.

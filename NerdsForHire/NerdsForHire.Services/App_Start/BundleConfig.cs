@@ -18,12 +18,6 @@ namespace NerdsForHire.Services
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(angularBundle));
             bundles.Add(new ScriptBundle("~/bundles/Nerds4Hire")
-                /* WinJS */
-                .Include
-                ("~/WinJS/js/WinJS.min.js", // Not sure if I need this one in her
-                  "~/WinJS/js//base.min.js",
-                  "~/WinJS/js/ui.min.js",
-                  "~/angular/angular-winjs.min.js")
                 .IncludeDirectory("~/scripts/factories", "*.js")
                 .Include(new string[1] { "~/scripts/app.module.js" })
                 .IncludeDirectory("~/scripts/controllers", "*.js")

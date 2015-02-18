@@ -21,7 +21,7 @@
 
         <!-- ANGULAR CONTENT-->
         <textarea id="btn_GitHubName"></textarea> <!--Create fnction in controller for displaying github user name-->
-        <button id="btn_submit" data-win-control="WinJS.UI.Tooltip" data-win-options="{innerHTML: 'Submit your Order'}">
+        <button id="btn_submit" ng-click="scrapeGitHub()">
             {{HomePage.GitHubID}}
         </button>
         <div ui-view>

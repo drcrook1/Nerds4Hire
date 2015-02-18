@@ -5,17 +5,22 @@ open FSharp.Data
 type repository = {Title: string; Link: string; Description: string; Stars: int}
 
 type context = HtmlProvider<"https://github.com/davevoyles">
-let uri = "https://github.com/drcrook1"
+let uri = "https://github.com/davevoyles"
 let body = context.Load(uri).Html.Body()
-printfn("PRINTING REPOSITORIES")
 let lists = body.Descendants("ul") 
 let repositories = lists |> Seq.filter(fun n -> n.HasClass("boxed-group-inner mini-repo-list"))
                             |> Seq.head
-let repositories' = repositories.Descendants("li") |> Seq.head
-let repositories'' = repositories'.Descendants("a") |> Seq.head
-//                    |> Seq.map(fun x -> 
-//                                let els = x.Descendants("a") |> Seq.toList
-//                                let repoName = els.[0].InnerText()
-//                                repoName)
-//                    |> Seq.iter(fun x -> printf "%s" x)
+let repositories' = repositories.Descendants("li") 
+                    |> Seq.map(fun repos ->
+                         repos.Descendants("a") 
+                        |> Seq.map(fun n -> 
+                                    {
+                                    Title = n.AttributeValue("href");
+                                    Link = n.AttributeValue("href");
+                                    Description = n.Elements().[3].InnerText();
+                                    Stars = n.Elements().[2].InnerText().AsInteger()
+                                    }
+                            ) |> Seq.head
+                     ) |> Seq.toList
 
+repositories' |> Seq.length
