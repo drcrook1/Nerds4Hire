@@ -17,26 +17,16 @@ using Microsoft.WindowsAzure;
 
 namespace NerdsForHire.Services.Controllers
 {
+    public class GameSaveStructure { }
     public class NerdController : ApiController
     {
-        private NerdsForHire.Services.Models.SQL.NerdsForHire db = new NerdsForHire.Services.Models.SQL.NerdsForHire();
+        private NForHire db = new NForHire();
 
         // GET: api/Nerd
         public IQueryable<Nerd> GetNerds()
         {
             return db.Nerds;
         }
-
-        //[HttpGet]
-        //[ResponseType(typeof(Nerd))]
-        //public IHttpActionResult GetNerd(int id)
-        //{
-        //    Nerd n = new Nerd();
-        //    n.FirstName = "David";
-        //    n.LastName = "Crook";
-        //    n.githubId = "drcrook1";
-        //    return Ok(n);
-        //}
 
         // GET: api/Nerd/5
         [ResponseType(typeof(Nerd))]

@@ -5,20 +5,28 @@ namespace NerdsForHire.Services.Models.SQL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class NerdsForHire : DbContext
+    public partial class NForHire : DbContext
     {
-        public NerdsForHire()
-            : base("name=NerdsForHire1")
+        public NForHire()
+            : base("name=NForHire")
         {
         }
 
+        public virtual DbSet<GitRepository> GitRepositories { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<Nerd> Nerds { get; set; }
+        public virtual DbSet<NerdRepositoryJunc> NerdRepositoryJuncs { get; set; }
         public virtual DbSet<NerdSpecialtyRef> NerdSpecialtyRefs { get; set; }
         public virtual DbSet<Specialty> Specialties { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<GitRepository>()
+                .HasMany(e => e.NerdRepositoryJuncs)
+                .WithRequired(e => e.GitRepository)
+                .HasForeignKey(e => e.RepositoryId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Nerd>()
                 .HasMany(e => e.Jobs)
                 .WithOptional(e => e.Nerd)

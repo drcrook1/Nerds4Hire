@@ -240,10 +240,12 @@
     <Compile Include="Models\Domain\NerdDomain.cs" />
     <Compile Include="Models\Domain\SpecialtyDomain.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\SQL\GitRepository.cs" />
     <Compile Include="Models\SQL\Job.cs" />
     <Compile Include="Models\SQL\Nerd.cs" />
-    <Compile Include="Models\SQL\NerdsForHire.cs" />
+    <Compile Include="Models\SQL\NerdRepositoryJunc.cs" />
     <Compile Include="Models\SQL\NerdSpecialtyRef.cs" />
+    <Compile Include="Models\SQL\NForHire.cs" />
     <Compile Include="Models\SQL\Specialty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -289,6 +291,8 @@
     <Content Include="Scripts\factories\AuthHttpResponseInterceptor.js" />
     <Content Include="Scripts\factories\LoginFactory.js" />
     <Content Include="Scripts\views\routeOne.html" />
+    <Content Include="Scripts\views\routeThree.html" />
+    <Content Include="Scripts\views\routeTwo.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

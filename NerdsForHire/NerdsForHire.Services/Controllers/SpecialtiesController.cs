@@ -15,7 +15,7 @@ namespace NerdsForHire.Services.Controllers
 {
     public class SpecialtiesController : ApiController
     {
-        private NerdsForHire.Services.Models.SQL.NerdsForHire db = new NerdsForHire.Services.Models.SQL.NerdsForHire();
+        private NForHire db = new NForHire();
 
         // GET: api/Specialties
         public IQueryable<Specialty> GetSpecialties()

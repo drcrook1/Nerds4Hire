@@ -12,6 +12,7 @@ namespace NerdsForHire.Services.Models.SQL
         public Nerd()
         {
             Jobs = new HashSet<Job>();
+            NerdRepositoryJuncs = new HashSet<NerdRepositoryJunc>();
             NerdSpecialtyRefs = new HashSet<NerdSpecialtyRef>();
         }
 
@@ -36,6 +37,8 @@ namespace NerdsForHire.Services.Models.SQL
         public virtual ICollection<Job> Jobs { get; set; }
 
         public virtual Specialty Specialty1 { get; set; }
+
+        public virtual ICollection<NerdRepositoryJunc> NerdRepositoryJuncs { get; set; }
 
         public virtual ICollection<NerdSpecialtyRef> NerdSpecialtyRefs { get; set; }
     }

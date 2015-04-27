@@ -13,15 +13,15 @@
             })
             .state('routeTwo', {
                 url: "/two",
-                templateUrl: "routesDemo/Two?donuts=3"
+                templateUrl: "scripts/views/routeTwo.html"
             })
             .state('routeThree', {
                 url: "/three",
-                templateUrl: "routesDemo/Three"
+                templateUrl: "scripts/views/routeThree.html"
             })
             .state('login', {
                 url: "/login",
-                templateUrl: "routesDemo/Login"
+                templateUrl: "scripts/views/login.html"
             });
 
         $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
