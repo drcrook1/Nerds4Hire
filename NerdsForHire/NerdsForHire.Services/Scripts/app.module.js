@@ -5,7 +5,9 @@
     .config(configFunction);
 
     function configFunction($stateProvider, $urlRouterProvider, $httpProvider) {
+        //sets default route
         $urlRouterProvider.otherwise("/one");
+        //set what routes we provide.  This can get very long.
         $stateProvider.
             state('routeOne', {
                 url: "/one",
@@ -23,7 +25,7 @@
                 url: "/login",
                 templateUrl: "scripts/views/login.html"
             });
-
+        //any time we get a 401 response, this function will run.
         $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
     }
 })();

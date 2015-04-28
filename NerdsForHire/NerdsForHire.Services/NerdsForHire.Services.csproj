@@ -228,6 +228,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GitRepositoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NerdController.cs" />
     <Compile Include="Controllers\SpecialtiesController.cs" />
@@ -279,6 +280,7 @@
     <None Include="Properties\PublishProfiles\nerds4hire__Staging.pubxml" />
     <None Include="Properties\PublishProfiles\NerdsForHire-Services.pubxml" />
     <None Include="Properties\PublishProfiles\NerdsForHire-Services__ForTesters.pubxml" />
+    <Content Include="Scripts\controllers\RouteTwoController.js" />
     <Content Include="Scripts\vendor\angular\angular-ui-router.js" />
     <Content Include="Scripts\vendor\angular\angular-ui-router.min.js" />
     <Content Include="Scripts\vendor\angular\angular-mocks.js" />
