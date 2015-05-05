@@ -22,7 +22,7 @@ namespace CleanDuplicateData.WebJob
             var result = db.GitRepositories.ToList();
             for(int i = 0; i < result.Count - 2; i++)
             {
-                for(int j = 1; j < result.Count - 1; j++)
+                for(int j = i + 1; j < result.Count - 1; j++)
                 {
                     GitRepository repo1 = result[i];
                     GitRepository repo2 = result[j];
