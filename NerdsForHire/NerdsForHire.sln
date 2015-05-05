@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NerdsForHire-GitHubScraper", "NerdsForHire-GitHubScraper\NerdsForHire-GitHubScraper.fsproj", "{86868C79-1164-44AD-A75B-DEC67CAF03EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanDuplicateData.WebJob", "CleanDuplicateData.WebJob\CleanDuplicateData.WebJob.csproj", "{89DE9C40-8338-4035-B257-125828C89F37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{86868C79-1164-44AD-A75B-DEC67CAF03EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86868C79-1164-44AD-A75B-DEC67CAF03EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86868C79-1164-44AD-A75B-DEC67CAF03EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89DE9C40-8338-4035-B257-125828C89F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DE9C40-8338-4035-B257-125828C89F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DE9C40-8338-4035-B257-125828C89F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DE9C40-8338-4035-B257-125828C89F37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
