@@ -20,6 +20,7 @@ namespace NerdsForHire.Services
             bundles.Add(new ScriptBundle("~/bundles/Nerds4Hire")
                 .IncludeDirectory("~/scripts/factories", "*.js")
                 .Include(new string[1] { "~/scripts/app.module.js" })
+                .IncludeDirectory("~/scripts/services", "*.js")
                 .IncludeDirectory("~/scripts/controllers", "*.js")
 
             );

@@ -1,16 +1,18 @@
-﻿    <div ng-controller="RouteTwoController as RouteTwo">
-        RouteTWO! YAYAYAYAYAY!
-        <ul>
-            <li ng-repeat="repo in RouteTwo.Repositories">
-                <h2>Repository</h2>
-                <span>Title: {{repo.Title}}</span>
-                <br />
-                <span>Stars: {{repo.Stars}}</span>
-                <br />
-                <span>Location: {{repo.Location}}</span>
-                <br />
-                <p>Description: {{repo.Description}}</p>
-                <h2>-----------------</h2>
-            </li>
-        </ul>
-    </div>
+﻿ <div ng-controller="RouteTwoController as RouteTwo">
+     <div ng-if="RouteTwo.isLoggedIn">
+         RouteTWO! YAYAYAYAYAY!
+         <ul>
+             <li ng-repeat="repo in RouteTwo.Repositories">
+                 <h2>Repository</h2>
+                 <span>Title: {{repo.Title}}</span>
+                 <br />
+                 <span>Stars: {{repo.Stars}}</span>
+                 <br />
+                 <span>Location: {{repo.Location}}</span>
+                 <br />
+                 <p>Description: {{repo.Description}}</p>
+                 <h2>-----------------</h2>
+             </li>
+         </ul>
+     </div>
+</div>

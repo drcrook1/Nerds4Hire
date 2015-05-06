@@ -1,26 +1,44 @@
-﻿//var LoginController = function ($scope, $routeParams, $location, LoginFactory) {
-//    $scope.loginForm = {
-//        emailAddress: '',
-//        password: '',
-//        rememberMe: false,
-//        returnUrl: $routeParams.returnUrl,
-//        loginFailure: false
-//    };
+﻿(function () {
+    "use strict";
 
-//    $scope.login = function () {
-//        var result = LoginFactory.login($scope.loginForm.emailAddress, $scope.loginForm.password, $scope.loginForm.rememberMe);
-//        result.then(function (result) {
-//            if (result.success) {
-//                if ($scope.loginForm.returnUrl !== undefined) {
-//                    $location.path('/routeOne');
-//                } else {
-//                    $location.path($scope.loginForm.returnUrl);
-//                }
-//            } else {
-//                $scope.loginForm.loginFailure = true;
-//            }
-//        });
-//    }
-//}
+    angular.module('app')
+    .controller("LoginController", ["$scope", "AuthService", function ( $scope, AuthService) {
+        var vm = this;
+        vm.isLoggedIn = false;
+        vm.message = "stuff";
+        vm.userData = {
+            userName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        };
 
-//LoginController.$inject = ['$scope', '$routeParams', '$location', 'LoginFactory'];
+        vm.register = function()
+        {
+            vm.userData.confirmPassword = vm.userData.password;
+            AuthService.registerUser(vm.userData)
+            .success(function (data) {
+                vm.login();
+                vm.message = "Registration Successful";
+            })
+            .error(function (data, status, headers, config) {
+                vm.isLoggedIn = false;
+                vm.message = response.statusText + "\r\n";
+                if (response.data.exceptionMessage)
+                    vm.message += response.data.exceptionMessage;
+                if(response.data.modelState)
+                {
+                    for(var key in response.data.modelState)
+                    {
+                        vm.message += response.data.modelState[key] + "\r\n";
+                    }
+                }
+            });
+        }
+
+        vm.login = function()
+        {
+
+        }
+    }]
+)})();

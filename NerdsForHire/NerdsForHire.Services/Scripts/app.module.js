@@ -2,6 +2,18 @@
     'use strict';
     angular.module('app', ['ui.router'])
     .factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor)
+    .run(["$rootScope", function ($rootScope) {
+        // Scope Globals
+        // ----------------------------------- 
+        $rootScope.app = {
+            name: 'Nerds For Hire',
+            description: 'Hire Some Nerds!',
+            api: {
+                base: 'http://localhost:56549/api',
+                requiresAuth: false
+            }
+        };
+    }])
     .config(configFunction);
 
     function configFunction($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -9,9 +21,9 @@
         $urlRouterProvider.otherwise("/one");
         //set what routes we provide.  This can get very long.
         $stateProvider.
-            state('routeOne', {
-                url: "/one",
-                templateUrl: "scripts/views/routeOne.html"
+            state('login', {
+                url: "/login",
+                templateUrl: "scripts/views/login.html"
             })
             .state('routeTwo', {
                 url: "/two",
@@ -20,10 +32,6 @@
             .state('routeThree', {
                 url: "/three",
                 templateUrl: "scripts/views/routeThree.html"
-            })
-            .state('login', {
-                url: "/login",
-                templateUrl: "scripts/views/login.html"
             });
         //any time we get a 401 response, this function will run.
         $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
