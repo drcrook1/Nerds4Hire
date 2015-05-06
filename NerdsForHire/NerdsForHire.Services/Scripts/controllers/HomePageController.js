@@ -4,7 +4,7 @@
     angular.module('app')
         .controller('HomePageController', ['$scope', '$http', function ($scope, $http) {
             var vm = this;
-            vm.Title = "FSharp Web Kit";
+            vm.Title = "Nerds For Hire";
             vm.GitHubID = "GitHubID";
 
             $scope.scrapeGitHub = function () {

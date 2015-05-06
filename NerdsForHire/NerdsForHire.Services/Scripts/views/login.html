@@ -1,0 +1,10 @@
+<div ng-controller="LoginController as Login">
+    <form ng-hide="Login.isLoggedIn">
+        <input type="text" placeholder="username" ng-model="Login.userData.userName" />
+        <input type="text" placeholder="email (username)" ng-model="Login.userData.email"/>
+        <input type="password" placeholder="password" ng-model="Login.userData.password" />
+        <button type="submit" ng-click="Login.login()">Login</button>
+        <button type="submit" ng-click="Login.register()">Register</button>
+        <div ng-show="Login.message">{{Login.message}}</div>
+    </form>
+</div>
