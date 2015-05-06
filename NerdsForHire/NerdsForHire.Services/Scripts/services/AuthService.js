@@ -5,11 +5,12 @@
     .factory("AuthService", function ($rootScope, $http)
     {
 
-        var loginUser = function (userData) {
+        var loginUser = function (params) {
             return $http({
                 method: "POST",
-                url: "",
-                data: userData
+                url: "/Token",
+                data: params,
+                headers: { 'Content-Type': "application/x-www-form-urlencoded" }
             });
         };
 
@@ -21,9 +22,31 @@
             });
         };
 
+        var createQString = function(data)
+        {
+            var str = [];
+            for (var d in data)
+            {
+                str.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+            }
+            return str.join('&');
+        };
+
         return {
-            login: loginUser,
-            registerUser: registerUser
+            loginUser: loginUser,
+            registerUser: registerUser,
+            createQString: createQString
         };
     })
 })();
+
+
+//transformRequest: function(data, headersGetter)
+//{
+//    var str = [];
+//    for (var d in data)
+//    {
+//        str.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+//    }
+//    return str.join('&');
+//}

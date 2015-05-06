@@ -21,7 +21,7 @@
                 vm.login();
                 vm.message = "Registration Successful";
             })
-            .error(function (data, status, headers, config) {
+            .error(function (response) {
                 vm.isLoggedIn = false;
                 vm.message = response.statusText + "\r\n";
                 if (response.data.exceptionMessage)
@@ -38,7 +38,25 @@
 
         vm.login = function()
         {
-
+            vm.userData.grant_type = "password";
+            var queryString = AuthService.createQString(vm.userData);
+            AuthService.loginUser(queryString)
+            .success(function (response) {
+                vm.isLoggedIn = true;
+                vm.message = "Successfully Logged In";
+                vm.password = "";
+                vm.token = response.access_token;
+            })
+            .error(function (response) {
+                vm.password = "";
+                vm.isLoggedIn = false;
+                vm.token = "";
+                vm.message = response.statusText + "\r\n";
+                if (response.data.exceptionMessage)
+                    vm.message += response.data.exceptionMessage;
+                if (response.data.error)
+                    vm.message += response.data.error;
+            });
         }
     }]
 )})();
