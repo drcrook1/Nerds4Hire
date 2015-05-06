@@ -13,6 +13,11 @@
                 requiresAuth: false
             }
         };
+        $rootScope.user = {
+            userName: '',
+            email: '',
+            isLoggedIn: false
+        };
     }])
     .config(configFunction);
 

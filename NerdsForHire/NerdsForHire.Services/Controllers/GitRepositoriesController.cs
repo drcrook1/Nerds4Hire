@@ -18,6 +18,7 @@ namespace NerdsForHire.Services.Controllers
         private NForHire db = new NForHire();
 
         // GET: api/GitRepositories
+        [Authorize]
         public IQueryable<GitRepository> GetGitRepositories()
         {
             return db.GitRepositories;

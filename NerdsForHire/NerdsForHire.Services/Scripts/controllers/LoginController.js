@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('app')
-    .controller("LoginController", ["$scope", "AuthService", function ( $scope, AuthService) {
+    .controller("LoginController", ["$rootScope", "AuthService", function ( $rootScope, AuthService) {
         var vm = this;
         vm.isLoggedIn = false;
         vm.message = "stuff";
@@ -45,7 +45,10 @@
                 vm.isLoggedIn = true;
                 vm.message = "Successfully Logged In";
                 vm.password = "";
-                vm.token = response.access_token;
+                //vm.token = response.access_token;
+                $rootScope.user.token = response.access_token;
+                $rootScope.user.userName = vm.userData.userName;
+                $rootScope.user.email = vm.userData.email;
             })
             .error(function (response) {
                 vm.password = "";

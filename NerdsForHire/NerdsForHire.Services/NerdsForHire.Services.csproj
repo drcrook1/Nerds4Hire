@@ -310,6 +310,7 @@
     <Content Include="Scripts\bootstrap\jquery-1.9.1.js" />
     <Content Include="Scripts\bootstrap\jquery-1.9.1.min.js" />
     <Content Include="Scripts\services\AuthService.js" />
+    <Content Include="Scripts\services\RepositoriesService.js" />
     <Content Include="Scripts\vendor\angular\angular-ui-router.js" />
     <Content Include="Scripts\vendor\angular\angular-ui-router.min.js" />
     <Content Include="Scripts\vendor\angular\angular-mocks.js" />

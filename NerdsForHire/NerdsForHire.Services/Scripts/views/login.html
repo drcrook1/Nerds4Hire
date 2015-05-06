@@ -1,5 +1,5 @@
 <div ng-controller="LoginController as Login">
-    <form ng-hide="Login.isLoggedIn">
+    <form ng-hide="$rootScope.user.isLoggedIn">
         <input type="text" placeholder="username" ng-model="Login.userData.userName" />
         <input type="text" placeholder="email (username)" ng-model="Login.userData.email"/>
         <input type="password" placeholder="password" ng-model="Login.userData.password" />

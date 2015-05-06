@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module('app')
-        .controller('RouteTwoController', ['$scope', '$http', function ($scope, $http) {
+        .controller('RouteTwoController', ['$scope', 'RepositoriesService', function ($scope, RepositoriesService) {
             var vm = this;
-            vm.Title = "FSharp Web Kit";
+            vm.Title = "Nerds 4 Hire";
             vm.GitHubID = "GitHubID";
             vm.Repositories = [{}, {}];
-            $http.get("api/GitRepositories").success(function (data) {
+            RepositoriesService.getRepositories().success(function (data) {
                 vm.Repositories = data;
             });
         }]);
