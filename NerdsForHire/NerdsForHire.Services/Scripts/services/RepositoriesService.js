@@ -7,8 +7,9 @@
         var getRepositories = function () {
             return $http({
                 method: "GET",
-                url: "/api/GitRepositories",
-                headers: { 'Authorization': "Bearer " + $rootScope.user.token }
+                url: "https://opendataapi.azure-api.net/api/GitRepositories",
+                headers: { 'ocp-apim-subscription-key': '489299e69f5b4ef7a13d03b2e25882cb',
+                'Authorization': "Bearer " + $rootScope.user.token }
             });
         };
 

@@ -40,5 +40,6 @@
             });
         //any time we get a 401 response, this function will run.
         $httpProvider.interceptors.push('AuthHttpResponseInterceptor');
+
     }
 })();

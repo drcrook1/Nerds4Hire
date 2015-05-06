@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using NerdsForHire.Services.Models.SQL;
+//using System.Web.Http.Cors;
 
 namespace NerdsForHire.Services.Controllers
 {
@@ -19,6 +20,7 @@ namespace NerdsForHire.Services.Controllers
 
         // GET: api/GitRepositories
         [Authorize]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<GitRepository> GetGitRepositories()
         {
             return db.GitRepositories;
